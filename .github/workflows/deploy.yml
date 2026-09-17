@@ -1,0 +1,73 @@
+name: Deploy Janusoft Corporate Web to Shared AWS EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies and build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to Shared EC2 via SCP & Docker
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          command_timeout: 30m
+          script: |
+            mkdir -p /home/ec2-user/app/janusoft
+            cd /home/ec2-user/app/janusoft
+
+      - name: Copy project files to EC2
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          eval $(ssh-agent -s)
+          echo "${{ secrets.EC2_SSH_KEY }}" | tr -d '\r' | ssh-add -
+
+          # Create project archive
+          tar -czf /tmp/janusoft.tar.gz \
+            --exclude=node_modules \
+            --exclude=.git \
+            dist \
+            Dockerfile \
+            docker-compose.yml \
+            nginx.conf \
+            package.json
+
+          # Copy to EC2
+          scp -o StrictHostKeyChecking=no /tmp/janusoft.tar.gz ec2-user@${{ secrets.EC2_HOST }}:/tmp/
+
+          # Extract and run docker compose on EC2
+          ssh -o StrictHostKeyChecking=no ec2-user@${{ secrets.EC2_HOST }} << 'EOF'
+            mkdir -p /home/ec2-user/app/janusoft
+            tar -zxf /tmp/janusoft.tar.gz -C /home/ec2-user/app/janusoft && rm -f /tmp/janusoft.tar.gz
+            cd /home/ec2-user/app/janusoft
+
+            # Build and launch container in shared app_webnet network
+            docker compose build --no-cache janusoft-web
+            docker rm -f janusoft-web || true
+            docker compose up -d --remove-orphans janusoft-web
+
+            # Reload reverse proxy to pick up janusoft.in vhost
+            docker restart nginx-proxy || true
+
+            echo "=== JANUSOFT DEPLOY COMPLETE ==="
+            docker ps | grep janusoft
+          EOF

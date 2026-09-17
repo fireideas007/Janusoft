@@ -1,0 +1,24 @@
+version: "3.9"
+
+networks:
+  app_webnet:
+    external: true
+
+services:
+  janusoft-web:
+    container_name: janusoft-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - VIRTUAL_HOST=janusoft.in,www.janusoft.in
+      - VIRTUAL_PORT=80
+      # Cloudflare terminates TLS at edge — origin must not force HTTP->HTTPS redirect
+      - HTTPS_METHOD=noredirect
+      - LETSENCRYPT_HOST=janusoft.in,www.janusoft.in
+      - LETSENCRYPT_EMAIL=aditya@janusoft.in
+    expose:
+      - "80"
+    networks:
+      - app_webnet
+    restart: unless-stopped
