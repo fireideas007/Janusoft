@@ -56,7 +56,7 @@ export const TechStack: React.FC = () => {
   ];
 
   return (
-    <section id="tech" className="py-24 relative bg-slate-900/40 dark:bg-slate-950/60 border-y border-slate-200 dark:border-slate-800">
+    <section id="tech" className="py-24 relative bg-slate-100/50 border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-300 text-xs font-semibold mb-3 border border-brand-500/20">

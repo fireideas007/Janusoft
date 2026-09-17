@@ -12,25 +12,14 @@ import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 
 export const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(() => {
-    const saved = localStorage.getItem('janusoft_theme');
-    if (saved) return saved === 'dark';
-    return true; // Default to dark mode for modern cyber IT feel
-  });
-
   const [selectedService, setSelectedService] = useState<string>('');
   const [preFilledScope, setPreFilledScope] = useState<string>('');
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add('dark');
-      localStorage.setItem('janusoft_theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('janusoft_theme', 'light');
-    }
-  }, [darkMode]);
+    // Force light mode
+    document.documentElement.classList.remove('dark');
+    localStorage.removeItem('janusoft_theme');
+  }, []);
 
   const handleSelectService = (serviceTitle: string) => {
     setSelectedService(serviceTitle);
@@ -57,8 +46,8 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 relative selection:bg-brand-500 selection:text-white bg-grid-pattern">
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+    <div className="min-h-screen w-full overflow-x-hidden bg-slate-50 text-slate-900 relative selection:bg-brand-500 selection:text-white bg-grid-pattern">
+      <Navbar />
       
       <main>
         <Hero />

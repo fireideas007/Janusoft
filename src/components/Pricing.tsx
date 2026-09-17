@@ -83,11 +83,11 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
           </p>
 
           {/* Currency Switcher */}
-          <div className="mt-6 inline-flex items-center gap-1 bg-slate-200 dark:bg-slate-800 p-1 rounded-xl text-xs font-mono">
+          <div className="mt-6 inline-flex items-center gap-1 bg-slate-200/80 p-1 rounded-xl text-xs font-mono">
             <button
               onClick={() => setCurrency('USD')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
-                currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-500 dark:text-slate-400'
+                currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               USD ($)
@@ -95,7 +95,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
             <button
               onClick={() => setCurrency('INR')}
               className={`px-3 py-1.5 rounded-lg transition-all ${
-                currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-500 dark:text-slate-400'
+                currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               INR (₹)

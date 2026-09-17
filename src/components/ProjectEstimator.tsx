@@ -83,7 +83,7 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onPreFillSco
   };
 
   return (
-    <section id="estimator" className="py-20 relative bg-slate-900/30 dark:bg-slate-950/40">
+    <section id="estimator" className="py-20 relative bg-slate-100/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-cyan/10 text-cyber-cyan text-xs font-semibold mb-3 border border-cyber-cyan/20">
@@ -218,19 +218,19 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onPreFillSco
                   Estimated Summary
                 </span>
                 {/* Currency Switcher */}
-                <div className="flex items-center gap-1 bg-slate-200 dark:bg-slate-800 p-1 rounded-lg text-xs font-mono">
+                <div className="flex items-center gap-1 bg-slate-200/80 p-1 rounded-lg text-xs font-mono">
                   <button
                     onClick={() => setCurrency('USD')}
-                    className={`px-2 py-0.5 rounded ${
-                      currency === 'USD' ? 'bg-brand-600 text-white font-bold' : 'text-slate-400'
+                    className={`px-2 py-0.5 rounded transition-all ${
+                      currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow-sm' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
                     USD
                   </button>
                   <button
                     onClick={() => setCurrency('INR')}
-                    className={`px-2 py-0.5 rounded ${
-                      currency === 'INR' ? 'bg-brand-600 text-white font-bold' : 'text-slate-400'
+                    className={`px-2 py-0.5 rounded transition-all ${
+                      currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow-sm' : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
                     INR (₹)
