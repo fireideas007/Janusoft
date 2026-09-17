@@ -77,9 +77,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   };
 
   return (
-    <section id="contact" className="py-24 relative">
-      {/* Glow */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-600/10 blur-[140px] rounded-full pointer-events-none" />
+    <section id="contact" className="py-24 relative overflow-hidden w-full">
+      {/* Glow - strictly contained */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[320px] sm:w-[500px] h-[320px] sm:h-[500px] bg-brand-600/10 blur-[90px] sm:blur-[140px] rounded-full" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">

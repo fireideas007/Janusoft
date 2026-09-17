@@ -79,13 +79,23 @@ export const ComparisonMatrix: React.FC = () => {
                   {/* Traditional column */}
                   <div className="md:col-span-4 flex items-start gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
                     <X className="w-4 h-4 text-rose-500 flex-shrink-0 mt-0.5" />
-                    <span>{row.traditional}</span>
+                    <div>
+                      <span className="md:hidden text-[10px] font-mono uppercase tracking-wider text-rose-500 font-bold block mb-0.5">
+                        Traditional Agency:
+                      </span>
+                      <span>{row.traditional}</span>
+                    </div>
                   </div>
 
                   {/* Janusoft column */}
                   <div className="md:col-span-4 flex items-start gap-2 text-xs sm:text-sm font-medium text-slate-900 dark:text-white bg-brand-500/5 dark:bg-brand-500/10 p-2.5 rounded-xl border border-brand-500/20">
                     <Check className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                    <span>{row.janusoft}</span>
+                    <div>
+                      <span className="md:hidden text-[10px] font-mono uppercase tracking-wider text-brand-600 dark:text-cyber-cyan font-bold block mb-0.5">
+                        Janusoft Model:
+                      </span>
+                      <span>{row.janusoft}</span>
+                    </div>
                   </div>
                 </div>
               );

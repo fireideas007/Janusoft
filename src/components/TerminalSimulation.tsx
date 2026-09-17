@@ -77,24 +77,25 @@ export const TerminalSimulation: React.FC = () => {
   return (
     <div className="w-full max-w-2xl mx-auto rounded-2xl overflow-hidden glass-panel border border-slate-700/60 shadow-2xl shadow-brand-500/10 dark:shadow-black/60">
       {/* Terminal Top Bar */}
-      <div className="bg-slate-900/90 px-4 py-3 flex items-center justify-between border-b border-slate-800">
+      <div className="bg-slate-900/90 px-3.5 sm:px-4 py-3 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2.5 sm:gap-0 border-b border-slate-800">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-rose-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
-          <div className="w-3 h-3 rounded-full bg-emerald-500/80"></div>
-          <span className="ml-2 text-xs font-mono text-slate-400 flex items-center gap-1.5">
-            <TermIcon className="w-3.5 h-3.5 text-cyber-cyan" />
-            janusoft-ai-engine ~ sprint-terminal
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-rose-500/80"></div>
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-amber-500/80"></div>
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-500/80"></div>
+          <span className="ml-1 sm:ml-2 text-[11px] sm:text-xs font-mono text-slate-400 flex items-center gap-1.5 truncate">
+            <TermIcon className="w-3.5 h-3.5 text-cyber-cyan flex-shrink-0" />
+            <span className="truncate">janusoft-ai-engine</span>
+            <span className="hidden sm:inline text-slate-600">~ sprint-terminal</span>
           </span>
         </div>
 
         {/* Preset Selector */}
-        <div className="flex items-center gap-1 bg-slate-800/80 rounded-lg p-0.5">
+        <div className="flex items-center gap-1 bg-slate-800/80 rounded-lg p-0.5 max-w-full overflow-x-auto scrollbar-none">
           {PRESETS.map((preset, index) => (
             <button
               key={preset.title}
               onClick={() => setActiveTab(index)}
-              className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all ${
+              className={`px-2 sm:px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md whitespace-nowrap transition-all ${
                 activeTab === index
                   ? 'bg-brand-600 text-white shadow-sm'
                   : 'text-slate-400 hover:text-slate-200'
@@ -147,11 +148,11 @@ export const TerminalSimulation: React.FC = () => {
 
         {/* Completion Result Banner */}
         {visibleStepCount >= currentPreset.steps.length && (
-          <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between gap-2 animate-in zoom-in-95 duration-200">
-            <span className="text-emerald-400 font-bold text-xs sm:text-sm">
+          <div className="mt-4 pt-3 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 animate-in zoom-in-95 duration-200">
+            <span className="text-emerald-400 font-bold text-xs sm:text-sm break-words">
               {currentPreset.output}
             </span>
-            <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-sans font-semibold">
+            <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-sans font-semibold self-start sm:self-auto flex-shrink-0">
               <Zap className="w-3 h-3 text-amber-400" /> 10x Fast
             </span>
           </div>
@@ -159,12 +160,12 @@ export const TerminalSimulation: React.FC = () => {
       </div>
 
       {/* Terminal Footer Info */}
-      <div className="bg-slate-900/60 px-4 py-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
-        <div className="flex items-center gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>Engine Status: Active & Ready for Production Sprints</span>
+      <div className="bg-slate-900/60 px-3 sm:px-4 py-2 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[10px] sm:text-[11px] text-slate-400">
+        <div className="flex items-center gap-2 truncate">
+          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping flex-shrink-0"></span>
+          <span className="truncate">Engine Status: Active & Ready for Sprints</span>
         </div>
-        <span className="hidden sm:inline text-slate-500">Janusoft Dev Matrix 2.4</span>
+        <span className="hidden sm:inline text-slate-500 flex-shrink-0">Janusoft Dev Matrix 2.4</span>
       </div>
     </div>
   );

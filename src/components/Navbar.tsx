@@ -30,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, setDarkMode }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 w-full max-w-full z-50 transition-all duration-300 ${
         scrolled
           ? 'glass-panel py-3 shadow-lg shadow-black/10 dark:shadow-black/40'
           : 'bg-transparent py-5'
