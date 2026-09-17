@@ -264,12 +264,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-100/70 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand-500 text-slate-900 dark:text-white"
                       >
-                        <option value="Rapid MVP & Fullstack Web Apps">Rapid MVP & Fullstack Web Apps</option>
-                        <option value="Generative AI & LLM Copilots">Generative AI & LLM Copilots</option>
-                        <option value="Workflow Automation & Data Sync">Workflow Automation & Data Sync</option>
-                        <option value="Cloud Architecture & Backend APIs">Cloud Architecture & Backend APIs</option>
-                        <option value="Code Modernization & Security Audit">Code Modernization & Security Audit</option>
-                        <option value="Dedicated Monthly AI Retainer">Dedicated Monthly AI Retainer</option>
+                        <option value="Enterprise Fullstack Web Applications">Enterprise Fullstack Web Applications</option>
+                        <option value="Legacy Application Modernization & Refactoring">Legacy Application Modernization & Refactoring</option>
+                        <option value="Cloud Architecture, DevOps & SRE Automation">Cloud Architecture, DevOps & SRE Automation</option>
+                        <option value="Enterprise Generative AI & Knowledge RAG Systems">Enterprise Generative AI & Knowledge RAG Systems</option>
+                        <option value="Autonomous Workflow & Business Process Automation">Autonomous Workflow & Business Process Automation</option>
+                        <option value="Scalable Backend APIs & Microservices Integration">Scalable Backend APIs & Microservices Integration</option>
+                        <option value="Database Engineering, Data Pipelines & Analytics">Database Engineering, Data Pipelines & Analytics</option>
+                        <option value="Quality Engineering, DevSecOps & Security Hardening">Quality Engineering, DevSecOps & Security Hardening</option>
+                        <option value="Dedicated Monthly Senior Engineering Retainer">Dedicated Monthly Senior Engineering Retainer</option>
                       </select>
                     </div>
                   </div>

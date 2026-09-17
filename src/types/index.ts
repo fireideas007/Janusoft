@@ -1,5 +1,6 @@
 export interface ServiceItem {
   id: string;
+  category: 'apps' | 'cloud' | 'ai' | 'apis' | 'qa';
   title: string;
   tagline: string;
   description: string;

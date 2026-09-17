@@ -52,11 +52,12 @@ export const Footer: React.FC = () => {
               Offerings
             </div>
             <ul className="space-y-2 text-xs">
-              <li><a href="#services" className="hover:text-brand-500 transition-colors">Rapid MVP SaaS</a></li>
-              <li><a href="#services" className="hover:text-brand-500 transition-colors">GenAI & LLM Copilots</a></li>
-              <li><a href="#services" className="hover:text-brand-500 transition-colors">Workflow Automation</a></li>
-              <li><a href="#services" className="hover:text-brand-500 transition-colors">Cloud & APIs</a></li>
-              <li><a href="#services" className="hover:text-brand-500 transition-colors">Code Modernization</a></li>
+              <li><a href="#services" className="hover:text-brand-600 transition-colors">Fullstack Web Apps</a></li>
+              <li><a href="#services" className="hover:text-brand-600 transition-colors">Legacy Modernization</a></li>
+              <li><a href="#services" className="hover:text-brand-600 transition-colors">Cloud & DevOps SRE</a></li>
+              <li><a href="#services" className="hover:text-brand-600 transition-colors">Enterprise AI & RAG</a></li>
+              <li><a href="#services" className="hover:text-brand-600 transition-colors">Backend APIs & Microservices</a></li>
+              <li><a href="#services" className="hover:text-brand-600 transition-colors">DevSecOps & QA Audit</a></li>
             </ul>
           </div>
 

@@ -14,20 +14,23 @@ interface FeatureOption {
 }
 
 const BASE_PROJECT_TYPES = [
-  { id: 'saas-mvp', name: 'Fullstack SaaS / Web App', baseDays: 6, baseCostUSD: 1499, description: 'Complete web application foundation with database, UI, and logic' },
-  { id: 'ai-copilot', name: 'GenAI & RAG Knowledge Copilot', baseDays: 5, baseCostUSD: 1299, description: 'Custom LLM integration, document embeddings, and streaming agent' },
-  { id: 'automation', name: 'Business Process Automation', baseDays: 4, baseCostUSD: 899, description: 'Multi-app sync pipelines, webhooks, and background worker queues' },
-  { id: 'api-infra', name: 'Backend API & Cloud Architecture', baseDays: 5, baseCostUSD: 1199, description: 'Scalable serverless microservices, database design, and auth' },
+  { id: 'saas-mvp', name: 'Enterprise Fullstack Web Application', baseDays: 7, baseCostUSD: 1699, description: 'Next.js, React, TypeScript, multi-tenant database & responsive UI' },
+  { id: 'ai-copilot', name: 'Generative AI & Enterprise RAG Copilot', baseDays: 6, baseCostUSD: 1499, description: 'Custom LLM integration, document embeddings & semantic agent' },
+  { id: 'legacy-modernize', name: 'Legacy Modernization & Code Refactor', baseDays: 6, baseCostUSD: 1399, description: 'PHP/Legacy JS to strict TypeScript with regression test harness' },
+  { id: 'cloud-devops', name: 'Cloud Infrastructure & DevOps CI/CD', baseDays: 4, baseCostUSD: 999, description: 'Docker containerization, Nginx SSL, AWS setup & automated pipelines' },
+  { id: 'api-microservices', name: 'Scalable Backend APIs & Microservices', baseDays: 5, baseCostUSD: 1299, description: 'FastAPI/Node.js REST/GraphQL, Redis cache & OpenAPI documentation' },
+  { id: 'automation-pipes', name: 'Autonomous Workflow & Data Sync Pipes', baseDays: 4, baseCostUSD: 899, description: 'CRM/ERP sync, background worker queues & resilient webhooks' },
 ];
 
 const ADDON_FEATURES: FeatureOption[] = [
-  { id: 'auth-rbac', name: 'User Authentication & RBAC (Supabase/Auth0)', days: 1, costUSD: 250, category: 'Security' },
-  { id: 'payments', name: 'Stripe / Razorpay Payment & Subscriptions', days: 2, costUSD: 350, category: 'Monetization' },
-  { id: 'ai-search', name: 'Vector Search & RAG Chatbot Integration', days: 2, costUSD: 450, category: 'AI' },
-  { id: 'admin-dash', name: 'Comprehensive Admin Analytics Dashboard', days: 2, costUSD: 390, category: 'UI/UX' },
-  { id: 'third-party-api', name: 'CRM & ERP Third-Party API Integrations', days: 1.5, costUSD: 300, category: 'Data' },
-  { id: 'seo-audit', name: 'SEO Optimization, OG Meta & Core Web Vitals', days: 1, costUSD: 200, category: 'Growth' },
-  { id: 'testing-suite', name: 'End-to-End Automated Test Suite & CI/CD', days: 1.5, costUSD: 290, category: 'QA' },
+  { id: 'auth-rbac', name: 'Enterprise Auth & RBAC (OAuth2 / Supabase)', days: 1, costUSD: 250, category: 'Security' },
+  { id: 'payments', name: 'Stripe / Razorpay Billing & Subscriptions', days: 1.5, costUSD: 350, category: 'Billing' },
+  { id: 'ai-search', name: 'pgvector Semantic Search & Document RAG', days: 2, costUSD: 450, category: 'AI' },
+  { id: 'admin-dash', name: 'Executive Analytics & Telemetry Dashboard', days: 2, costUSD: 390, category: 'Analytics' },
+  { id: 'third-party-api', name: 'CRM / ERP & Third-Party API Connectors', days: 1.5, costUSD: 300, category: 'Integrations' },
+  { id: 'testing-suite', name: 'End-to-End Automated Test Suite (Playwright)', days: 1.5, costUSD: 290, category: 'QA' },
+  { id: 'security-audit', name: 'OWASP Security Audit & Vulnerability Remediation', days: 1, costUSD: 280, category: 'DevSecOps' },
+  { id: 'docker-cicd', name: 'Multi-Stage Docker & GitHub Actions CI/CD', days: 1, costUSD: 260, category: 'DevOps' },
 ];
 
 export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onPreFillScope }) => {
