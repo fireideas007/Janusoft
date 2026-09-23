@@ -20,6 +20,7 @@ export interface PricingPlan {
   features: string[];
   bestFor: string;
   recommended?: boolean;
+  highlightBadge?: string;
   ctaText: string;
 }
 

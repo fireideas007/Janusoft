@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Menu, X, ArrowRight, Terminal } from 'lucide-react';
+import { Sparkles, Menu, X, ArrowRight, Terminal, Zap } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -15,12 +15,11 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Services', href: '#services' },
-    { name: 'Why Janusoft', href: '#why-us' },
-    { name: 'Scope Estimator', href: '#estimator' },
-    { name: 'Playbook', href: '#process' },
-    { name: 'Tech & AI', href: '#tech' },
+    { name: 'Solutions', href: '#solutions' },
+    { name: 'Engagement', href: '#engagement-models' },
+    { name: 'Estimator', href: '#estimator' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'FAQ', href: '#faq' },
+    { name: 'Why Us', href: '#why-us' },
   ];
 
   return (
@@ -35,9 +34,9 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-cyber-cyan to-brand-500 p-0.5 shadow-md shadow-brand-500/20 group-hover:shadow-brand-500/40 transition-all duration-300">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-cyan-500 to-indigo-600 p-0.5 shadow-md shadow-brand-500/20 group-hover:shadow-brand-500/40 transition-all duration-300">
               <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <Terminal className="w-5 h-5 text-cyber-cyan group-hover:rotate-12 transition-transform duration-300" />
+                <Terminal className="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
               </div>
             </div>
             <div className="flex flex-col">
@@ -56,7 +55,7 @@ export const Navbar: React.FC = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -71,11 +70,11 @@ export const Navbar: React.FC = () => {
           {/* Action CTAs */}
           <div className="hidden sm:flex items-center gap-3">
             <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-md shadow-brand-600/25 hover:shadow-brand-600/40 active:scale-[0.98] transition-all"
+              href="#prototype-offer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-brand-600 via-brand-500 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-md shadow-brand-600/25 hover:shadow-brand-600/40 active:scale-[0.98] transition-all"
             >
-              <Sparkles className="w-4 h-4 text-cyber-cyan" />
-              <span>Start a Project</span>
+              <Zap className="w-4 h-4 text-amber-300" />
+              <span>48h Prototype ($390)</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -91,36 +90,42 @@ export const Navbar: React.FC = () => {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="sm:hidden glass-panel border-b border-slate-200 dark:border-slate-800 px-4 pt-4 pb-6 mt-3 animate-in slide-in-from-top duration-200">
-          <nav className="flex flex-col gap-3">
-            {navLinks.map((link) => (
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden mt-3 p-4 rounded-2xl glass-panel border border-slate-200 shadow-xl space-y-3 animate-in fade-in duration-200">
+            <nav className="flex flex-col space-y-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+            <div className="pt-2 border-t border-slate-200/80 flex flex-col gap-2">
               <a
-                key={link.name}
-                href={link.href}
+                href="#prototype-offer"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 text-base font-medium rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-brand-600 to-indigo-600 shadow-md"
               >
-                {link.name}
+                <Zap className="w-4 h-4 text-amber-300" />
+                <span>48h Prototype Sprint ($390)</span>
               </a>
-            ))}
-            <div className="pt-3 border-t border-slate-200 dark:border-slate-800">
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-medium text-sm text-white bg-gradient-to-r from-brand-600 to-indigo-600"
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs text-slate-700 bg-slate-100 hover:bg-slate-200"
               >
-                <Sparkles className="w-4 h-4" />
-                <span>Start a Project</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>Book Strategy Call</span>
               </a>
             </div>
-          </nav>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </header>
   );
 };

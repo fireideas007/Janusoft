@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { RapidPrototypeOffer } from './components/RapidPrototypeOffer';
 import { ComparisonMatrix } from './components/ComparisonMatrix';
 import { Services } from './components/Services';
+import { IndustrySolutions } from './components/IndustrySolutions';
+import { EngagementModels } from './components/EngagementModels';
 import { ProjectEstimator } from './components/ProjectEstimator';
 import { Process } from './components/Process';
 import { TechStack } from './components/TechStack';
@@ -51,8 +54,11 @@ export const App: React.FC = () => {
       
       <main>
         <Hero />
+        <RapidPrototypeOffer onSelectOffer={handlePreFillScope} />
         <ComparisonMatrix />
         <Services onSelectService={handleSelectService} />
+        <IndustrySolutions onSelectSolution={handleSelectService} />
+        <EngagementModels onSelectModel={handleSelectPlan} />
         <ProjectEstimator onPreFillScope={handlePreFillScope} />
         <Process />
         <TechStack />
