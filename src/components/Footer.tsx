@@ -61,12 +61,12 @@ export const Footer: React.FC = () => {
               Practice Areas
             </div>
             <ul className="space-y-2 text-xs">
-              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Fullstack Web Apps</Link></li>
-              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Legacy Modernization</Link></li>
-              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Cloud & DevOps SRE</Link></li>
-              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Enterprise AI & RAG</Link></li>
-              <li><Link to="/solutions" className="hover:text-brand-600 transition-colors">Industry Solutions</Link></li>
-              <li><Link to="/services" className="hover:text-brand-600 transition-colors">DevSecOps & QA</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Web Apps & MVPs</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Custom AI Chatbots</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Websites & Landing Pages</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Admin Dashboards</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">API Automations</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Website Modernization</Link></li>
             </ul>
           </div>
 

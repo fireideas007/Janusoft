@@ -264,14 +264,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-100/70 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 focus:outline-none focus:border-brand-500 text-slate-900 dark:text-white"
                       >
-                        <option value="Enterprise Fullstack Web Applications">Enterprise Fullstack Web Applications</option>
-                        <option value="Legacy Application Modernization & Refactoring">Legacy Application Modernization & Refactoring</option>
-                        <option value="Cloud Architecture, DevOps & SRE Automation">Cloud Architecture, DevOps & SRE Automation</option>
-                        <option value="Enterprise Generative AI & Knowledge RAG Systems">Enterprise Generative AI & Knowledge RAG Systems</option>
-                        <option value="Autonomous Workflow & Business Process Automation">Autonomous Workflow & Business Process Automation</option>
-                        <option value="Scalable Backend APIs & Microservices Integration">Scalable Backend APIs & Microservices Integration</option>
-                        <option value="Database Engineering, Data Pipelines & Analytics">Database Engineering, Data Pipelines & Analytics</option>
-                        <option value="Quality Engineering, DevSecOps & Security Hardening">Quality Engineering, DevSecOps & Security Hardening</option>
+                        <option value="Rapid Fullstack Web Apps & MVPs">Rapid Fullstack Web Apps & MVPs (Next.js + Supabase)</option>
+                        <option value="Custom AI Chatbots & Knowledge Assistants">Custom AI Chatbots & Knowledge Assistants (RAG)</option>
+                        <option value="High-Converting Landing Pages & Websites">High-Converting Landing Pages & Websites (Next.js)</option>
+                        <option value="Internal Admin Dashboards & CRM Portals">Internal Admin Dashboards & CRM Portals</option>
+                        <option value="Workflow Automations & Webhook Integrations">Workflow Automations & Webhook Integrations</option>
+                        <option value="Website Redesign & Modernization">Website Redesign & Modernization</option>
+                        <option value="48-Hour Rapid POC Prototype ($390 / ₹29,990)">48-Hour Rapid POC Prototype ($390 / ₹29,990)</option>
                         <option value="Dedicated Monthly Senior Engineering Retainer">Dedicated Monthly Senior Engineering Retainer</option>
                       </select>
                     </div>

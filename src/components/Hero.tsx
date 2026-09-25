@@ -1,5 +1,6 @@
 import React from 'react';
-import { Sparkles, ArrowRight, ShieldCheck, Zap, Code2, Users2, Calendar, Clock } from 'lucide-react';
+import { Sparkles, ArrowRight, ShieldCheck, Zap, Code2, Users2, Calendar, Clock, Rocket } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { TerminalSimulation } from './TerminalSimulation';
 
 export const Hero: React.FC = () => {
@@ -14,10 +15,14 @@ export const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12">
           {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-700 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+          <Link
+            to="/engagement"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-700 text-xs sm:text-sm font-semibold mb-6 shadow-sm hover:bg-brand-500/15 transition-colors"
+          >
             <Zap className="w-4 h-4 text-brand-600 fill-brand-600" />
             <span>Zero-Risk Entry: 48-Hour Working Prototype ($390 • 100% Refundable)</span>
-          </div>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.15] mb-6">
@@ -29,35 +34,35 @@ export const Hero: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed mb-8">
-            High-performance fullstack web applications, custom LLM integrations, and cloud architectures built in days—not quarters. Direct senior technical founder partnership with zero agency bloat.
+            High-performance fullstack web applications, custom AI chatbots, and sleek dashboards built in days—not quarters. Direct senior technical founder partnership with zero agency bloat.
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <a
-              href="#prototype-offer"
+            <Link
+              to="/engagement"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-brand-600 via-brand-500 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-xl shadow-brand-600/30 hover:shadow-brand-600/50 hover:-translate-y-0.5 transition-all"
             >
               <Zap className="w-5 h-5 text-amber-300" />
               <span>Claim 48h Prototype ($390)</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
 
-            <a
-              href="#estimator"
+            <Link
+              to="/services"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm sm:text-base text-brand-700 bg-brand-50 hover:bg-brand-100 border border-brand-200 shadow-sm transition-all hover:-translate-y-0.5"
+            >
+              <Rocket className="w-4 h-4 text-brand-600" />
+              <span>Explore Services</span>
+            </Link>
+
+            <Link
+              to="/estimator"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-semibold text-sm sm:text-base text-slate-800 bg-white hover:bg-slate-50 border border-slate-200 shadow-sm transition-all hover:-translate-y-0.5"
             >
               <Clock className="w-4 h-4 text-brand-600" />
-              <span>Calculate Scope & Cost</span>
-            </a>
-
-            <a
-              href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-semibold text-sm sm:text-base text-slate-600 hover:text-slate-900 transition-all"
-            >
-              <Calendar className="w-4 h-4 text-cyan-600" />
-              <span>Book Strategy Call</span>
-            </a>
+              <span>Scope & Cost Calculator</span>
+            </Link>
           </div>
 
           {/* Trust badges */}

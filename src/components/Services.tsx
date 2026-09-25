@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { 
   Rocket, 
-  BrainCircuit, 
+  Bot, 
+  Layout, 
+  BarChart3, 
   Workflow, 
-  Server, 
-  ShieldCheck, 
-  RefreshCw,
-  Database,
+  RefreshCw, 
   CheckCircle2, 
   Clock, 
-  ArrowRight,
-  Sparkles,
-  CloudLightning,
-  Layers,
+  ArrowRight, 
+  Sparkles, 
   FileCheck2,
-  Code2
+  Code2,
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import { ServiceItem } from '../types';
 
@@ -24,164 +23,128 @@ interface ServicesProps {
 
 const SERVICES_DATA: ServiceItem[] = [
   {
-    id: 'enterprise-web-apps',
-    category: 'apps',
-    title: 'Enterprise Fullstack Web Applications',
-    tagline: 'Custom web platforms, client portals & B2B SaaS engineered for scale.',
-    description: 'From concept to high-availability production. We engineer responsive web applications built with Next.js/React, TypeScript, enterprise authentication, payment gateways, and resilient database architectures.',
+    id: 'web-mvp',
+    category: 'web-apps',
+    title: 'Rapid Fullstack Web Apps & MVPs',
+    tagline: 'From idea to live production software with database, auth & payments in days.',
+    description: 'We build complete web applications with modern authentication, PostgreSQL databases, user dashboards, and Stripe/Razorpay payment processing. Clean, modular code that you 100% own.',
     iconName: 'Rocket',
     deliverables: [
-      'Production-ready Next.js / React application with strict type safety',
-      'Multi-tenant PostgreSQL / Supabase schema with RLS security policies',
-      'Enterprise authentication (OAuth 2.0, SSO, Magic Links) & role-based access',
-      'Payment processing & subscription billing integration (Stripe / Razorpay)',
-      'Automated CI/CD pipeline and zero-downtime edge deployment',
+      'Production-ready Next.js / React application with clean architecture',
+      'PostgreSQL / Supabase database with secure user authentication',
+      'Stripe or Razorpay payment checkout & subscription billing',
+      'Mobile-responsive UI crafted with Tailwind CSS',
+      'Live deployment on Vercel / Cloudflare with full Git source handoff',
     ],
-    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Stripe'],
-    timeline: '7 to 14 Days',
-    badge: 'Core Practice',
+    techStack: ['Next.js', 'React', 'Supabase', 'Tailwind CSS', 'Stripe / Razorpay'],
+    timeline: '4 to 7 Days',
+    badge: 'Most Requested',
   },
   {
-    id: 'legacy-modernization',
-    category: 'apps',
-    title: 'Legacy Application Modernization & Refactoring',
-    tagline: 'De-risk technical debt. Modernize legacy stacks into maintainable TypeScript.',
-    description: 'Transform sluggish, fragile legacy codebases (PHP, jQuery, legacy React, monolithic scripts) into blazing-fast, modular TypeScript systems with zero regression and no business downtime.',
-    iconName: 'RefreshCw',
+    id: 'ai-chatbots',
+    category: 'ai-bots',
+    title: 'Custom AI Chatbots & Document Assistants',
+    tagline: 'Intelligent customer support & internal document search powered by frontier AI.',
+    description: 'Empower your customers or team with an AI bot trained on your specific business knowledge, documents, and FAQs. Integrated with Gemini 2.0 or OpenAI with strict prompt guardrails so it never hallucinates.',
+    iconName: 'Bot',
     deliverables: [
-      'Comprehensive codebase architecture & technical debt audit report',
-      'Systematic migration from legacy JavaScript/PHP to strict TypeScript',
-      'Modular component system & clean state management refactoring',
-      'Automated regression safety test harness to protect existing workflows',
-      'Performance overhaul targeting 95+ Google Lighthouse scores',
+      'Custom AI chatbot trained on your company FAQs, PDFs, and website data',
+      'Fast streaming conversational UI with suggested prompts & citations',
+      'Integration with Gemini 2.0 or OpenAI API with strict answer guardrails',
+      'Embeddable chat widget for your website or dedicated internal portal',
+      'Admin dashboard to view user conversations and update knowledge files',
     ],
-    techStack: ['TypeScript', 'React', 'Node.js', 'Vite', 'Vitest', 'Lighthouse'],
-    timeline: '5 to 12 Days',
-    badge: 'High ROI',
+    techStack: ['Gemini 2.0', 'OpenAI', 'Supabase pgvector', 'Next.js', 'Tailwind'],
+    timeline: '3 to 5 Days',
+    badge: 'High Demand',
   },
   {
-    id: 'cloud-devops',
-    category: 'cloud',
-    title: 'Cloud Architecture, DevOps & SRE Automation',
-    tagline: 'Resilient cloud infrastructure, Docker orchestration & automated CI/CD.',
-    description: 'Modernize your deployment workflow with bulletproof cloud setups. We configure Docker containerization, reverse proxying, Cloudflare edge security, and automated GitHub Actions pipelines on AWS, GCP, or Vercel.',
-    iconName: 'CloudLightning',
+    id: 'landing-pages',
+    category: 'websites',
+    title: 'High-Converting Landing Pages & Websites',
+    tagline: 'Sleek, blazing-fast marketing websites designed to convert visitors into clients.',
+    description: 'Ditch bloated WordPress page builders. We build ultra-clean, mobile-first marketing pages that load in under 1 second, showcase your product with crisp design, and connect directly to your lead channels.',
+    iconName: 'Layout',
     deliverables: [
-      'Multi-stage Docker containerization & Docker Compose orchestration',
-      'Nginx reverse proxy with automated SSL/TLS & Cloudflare edge integration',
-      'Automated GitHub Actions CI/CD pipelines (test, build, deploy)',
-      'Cloud cost optimization audit (reduce infrastructure bills by 30–50%)',
-      'Automated daily database backups & disaster recovery playbooks',
+      'High-converting layout with sleek typography and smooth micro-interactions',
+      'Lead intake contact forms hooked to direct Email and WhatsApp alerts',
+      'Sub-second load times achieving 95+ Google Lighthouse scores',
+      'Full mobile responsiveness optimized for phones, tablets & desktops',
+      'SEO meta tags, OpenGraph social preview cards & analytics integration',
     ],
-    techStack: ['AWS (EC2/S3)', 'Docker', 'Nginx', 'Cloudflare', 'GitHub Actions', 'Linux'],
-    timeline: '3 to 7 Days',
-    badge: 'Infrastructure',
+    techStack: ['Next.js', 'React', 'Tailwind CSS', 'Vercel', 'SEO Optimized'],
+    timeline: '2 to 4 Days',
+    badge: 'Quick Turnaround',
   },
   {
-    id: 'gen-ai-rag',
-    category: 'ai',
-    title: 'Enterprise Generative AI & Knowledge RAG Systems',
-    tagline: 'Proprietary enterprise search, custom copilots & secure LLM pipelines.',
-    description: 'Empower internal teams and customers with AI grounded in your proprietary documents. We implement high-accuracy RAG vector pipelines with Gemini 2.0, Grok, or GPT-4o, complete with citation sources and zero-hallucination guardrails.',
-    iconName: 'BrainCircuit',
+    id: 'admin-dashboards',
+    category: 'dashboards',
+    title: 'Internal Tools & Custom Admin Dashboards',
+    tagline: 'Clean, intuitive dashboards to manage your users, data, orders & metrics.',
+    description: 'Stop wrestling with messy spreadsheets. We build tailored internal portals and admin panels to let your team view data, manage users, update records, and inspect analytics with secure role-based access.',
+    iconName: 'BarChart3',
     deliverables: [
-      'Enterprise document ingestion & chunking pipeline (PDFs, docs, tables)',
-      'High-dimension vector embeddings indexed with pgvector / Pinecone',
-      'Multi-model routing (Gemini 2.0 Flash/Pro, GPT-4o, Grok-Beta)',
-      'Anti-hallucination validation filters & strict source citations',
-      'Streaming conversational UI with response caching to slash token costs',
+      'Interactive data tables with instant search, filtering, and pagination',
+      'Safe CRUD workflows to view, create, edit, and delete records',
+      'Summary metric cards and visual charts for revenue, orders, and users',
+      'Role-based login access (Admin vs Team Member) using Supabase Auth',
+      'One-click CSV/Excel export for reporting and analysis',
     ],
-    techStack: ['Gemini 2.0', 'Grok', 'OpenAI', 'pgvector', 'FastAPI', 'LangChain'],
-    timeline: '5 to 10 Days',
-    badge: 'Frontier AI',
+    techStack: ['Next.js', 'Supabase', 'Tailwind CSS', 'Recharts', 'PostgreSQL'],
+    timeline: '3 to 6 Days',
+    badge: 'Operational ROI',
   },
   {
-    id: 'automation-pipes',
-    category: 'ai',
-    title: 'Autonomous Workflow & Business Process Automation',
-    tagline: 'Replace repetitive manual tasks with resilient, event-driven pipelines.',
-    description: 'Connect disjointed business systems. We architect intelligent background workers, webhook listeners, and AI-augmented document processors that automate customer onboarding, CRM updates, and transaction logging.',
+    id: 'api-automations',
+    category: 'automations',
+    title: 'Workflow Automations & API Integrations',
+    tagline: 'Connect your business tools and eliminate repetitive manual data entry.',
+    description: 'We connect your disjointed apps with reliable webhook scripts and background automations. From sending instant WhatsApp updates on new orders to syncing customer data between web forms and your CRM.',
     iconName: 'Workflow',
     deliverables: [
-      'Bidirectional data sync between CRMs, ERPs, and internal databases',
-      'Cryptographically verified webhook receivers with dead-letter retry queues',
-      'Automated AI document parsing & invoice data extraction',
-      'Real-time alert dispatching (Slack, WhatsApp, Email, SMS)',
-      'Administrative telemetry dashboard for pipeline health & error tracing',
+      'Automated webhook receivers for Stripe, Razorpay, Shopify & web forms',
+      'Real-time alert dispatching to WhatsApp, Slack, or Email',
+      'Bidirectional data synchronization with Google Sheets, Airtable, or CRM',
+      'Automated customer onboarding & email confirmation sequences',
+      'Resilient error-handling logic that never drops a lead or transaction',
     ],
-    techStack: ['Python', 'Node.js', 'BullMQ', 'Redis', 'Inngest', 'Webhooks'],
-    timeline: '3 to 7 Days',
-    badge: 'Productivity',
+    techStack: ['Python', 'Node.js', 'Webhooks', 'Resend', 'WhatsApp API'],
+    timeline: '2 to 4 Days',
+    badge: 'Save 20+ Hours',
   },
   {
-    id: 'backend-apis',
-    category: 'apis',
-    title: 'Scalable Backend APIs & Microservices Integration',
-    tagline: 'Type-safe REST & GraphQL endpoints engineered for high concurrency.',
-    description: 'Build or modernize the core engine of your software. We develop high-speed RESTful and GraphQL APIs with comprehensive OpenAPI/Swagger documentation, Redis caching layers, and database optimization.',
-    iconName: 'Server',
+    id: 'redesign-modernize',
+    category: 'websites',
+    title: 'Website Redesign & Frontend Rebuild',
+    tagline: 'Transform outdated, sluggish websites into modern, high-speed web apps.',
+    description: 'Give your online presence an immediate upgrade. We take your dated website and rebuild it with a modern aesthetic, responsive design, and cutting-edge tech that makes your company look established and credible.',
+    iconName: 'RefreshCw',
     deliverables: [
-      'Type-safe RESTful / GraphQL API architecture with OpenAPI documentation',
-      'Role-Based Access Control (RBAC) with JWT & secure session tokens',
-      'Redis caching layer for sub-50ms high-throughput response times',
-      'Rate limiting, payload validation, and DDoS protection filters',
-      'Complete Postman / Bruno API test collections and SDK stubs',
+      'Complete aesthetic redesign with contemporary design standards',
+      'Flawless responsive behavior on iPhones, Androids, iPads & desktops',
+      'Migration from slow legacy builders to clean, maintainable Next.js/React',
+      'Preserving all existing URL structures so you do not lose Google rankings',
+      'Fast hosting configuration with automatic SSL and zero server maintenance',
     ],
-    techStack: ['Node.js', 'Python FastAPI', 'PostgreSQL', 'Redis', 'OpenAPI', 'Docker'],
-    timeline: '4 to 10 Days',
-    badge: 'High Concurrency',
-  },
-  {
-    id: 'database-engineering',
-    category: 'apis',
-    title: 'Database Engineering, Data Pipelines & Analytics',
-    tagline: 'Relational & vector schema design, query tuning & ETL pipelines.',
-    description: 'Ensure data integrity and lightning-fast query speeds. We design clean relational schemas, tune slow SQL queries, build automated data aggregation pipelines, and create real-time operational dashboards.',
-    iconName: 'Database',
-    deliverables: [
-      'Normalized PostgreSQL / Supabase database architecture & migration scripts',
-      'Query profiling, composite index optimization & connection pooling',
-      'Automated ETL / ELT sync pipelines into analytics data warehouses',
-      'Row-level security (RLS) policies for multi-tenant data isolation',
-      'Custom business intelligence dashboard with interactive charts',
-    ],
-    techStack: ['PostgreSQL', 'Supabase', 'SQL Optimization', 'Prisma', 'pgvector'],
-    timeline: '4 to 8 Days',
-    badge: 'Data Core',
-  },
-  {
-    id: 'security-qa',
-    category: 'qa',
-    title: 'Quality Engineering, DevSecOps & Security Hardening',
-    tagline: 'Comprehensive automated testing, OWASP audits & security hardening.',
-    description: 'Ship code with complete confidence. We retrofit legacy and modern apps with automated End-to-End and unit test suites, conduct rigorous OWASP Top 10 vulnerability audits, and implement secure headers and secret hygiene.',
-    iconName: 'ShieldCheck',
-    deliverables: [
-      'End-to-End automated testing suite (Playwright / Cypress)',
-      'Comprehensive OWASP Top 10 vulnerability audit & mitigation report',
-      'Content Security Policy (CSP), CORS, and HTTP security headers hardening',
-      'Automated CI test gates preventing regressions on new pull requests',
-      'Zero-vulnerability verification certification for clients and stakeholders',
-    ],
-    techStack: ['Playwright', 'Vitest / Jest', 'OWASP ZAP', 'GitHub Actions', 'SonarQube'],
-    timeline: '3 to 6 Days',
-    badge: 'Security & QA',
+    techStack: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'Vercel'],
+    timeline: '3 to 5 Days',
+    badge: 'Fresh Upgrade',
   },
 ];
 
-type PracticeCategory = 'all' | 'apps' | 'cloud' | 'ai' | 'apis' | 'qa';
+type ServiceCategory = 'all' | 'web-apps' | 'ai-bots' | 'websites' | 'dashboards' | 'automations';
 
-const CATEGORIES: { id: PracticeCategory; label: string }[] = [
-  { id: 'all', label: 'All Practice Areas' },
-  { id: 'apps', label: 'Apps & Modernization' },
-  { id: 'cloud', label: 'Cloud & DevOps' },
-  { id: 'ai', label: 'Enterprise AI & Automation' },
-  { id: 'apis', label: 'APIs & Data Engineering' },
-  { id: 'qa', label: 'DevSecOps & QA' },
+const CATEGORIES: { id: ServiceCategory; label: string }[] = [
+  { id: 'all', label: 'All Services' },
+  { id: 'web-apps', label: 'Web Apps & MVPs' },
+  { id: 'ai-bots', label: 'Custom AI Chatbots' },
+  { id: 'websites', label: 'Websites & Landing Pages' },
+  { id: 'dashboards', label: 'Admin Dashboards' },
+  { id: 'automations', label: 'API Automations' },
 ];
 
 export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
-  const [activeCategory, setActiveCategory] = useState<PracticeCategory>('all');
+  const [activeCategory, setActiveCategory] = useState<ServiceCategory>('all');
 
   const filteredServices = activeCategory === 'all'
     ? SERVICES_DATA
@@ -191,22 +154,18 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     switch (name) {
       case 'Rocket':
         return <Rocket className="w-6 h-6 text-brand-600" />;
-      case 'RefreshCw':
-        return <RefreshCw className="w-6 h-6 text-indigo-600" />;
-      case 'CloudLightning':
-        return <CloudLightning className="w-6 h-6 text-sky-600" />;
-      case 'BrainCircuit':
-        return <BrainCircuit className="w-6 h-6 text-cyan-600" />;
+      case 'Bot':
+        return <Bot className="w-6 h-6 text-cyan-600" />;
+      case 'Layout':
+        return <Layout className="w-6 h-6 text-indigo-600" />;
+      case 'BarChart3':
+        return <BarChart3 className="w-6 h-6 text-amber-600" />;
       case 'Workflow':
         return <Workflow className="w-6 h-6 text-emerald-600" />;
-      case 'Server':
-        return <Server className="w-6 h-6 text-amber-600" />;
-      case 'Database':
-        return <Database className="w-6 h-6 text-violet-600" />;
-      case 'ShieldCheck':
-        return <ShieldCheck className="w-6 h-6 text-rose-600" />;
+      case 'RefreshCw':
+        return <RefreshCw className="w-6 h-6 text-violet-600" />;
       default:
-        return <Layers className="w-6 h-6 text-brand-600" />;
+        return <Zap className="w-6 h-6 text-brand-600" />;
     }
   };
 
@@ -215,19 +174,19 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 text-brand-600 text-xs font-semibold mb-3 border border-brand-500/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 text-brand-700 text-xs font-semibold mb-3 border border-brand-500/20">
             <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
-            <span>Enterprise Practice Areas • Modern IT Services</span>
+            <span>AI-Accelerated Engineering • What We Build</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Enterprise IT Capabilities, Delivered at AI Velocity
+            Focused IT Services, Delivered in Days
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Inspired by top global IT consultancies, re-engineered for agility. We deliver production-grade applications, cloud infrastructure, and frontier AI integrations in days without agency bloat.
+            No bloated 10-person agency overhead. We specialize in building modern fullstack web apps, custom AI chatbots, and sleek dashboards powered by frontier AI velocity.
           </p>
         </div>
 
-        {/* Practice Category Filter Tabs */}
+        {/* Category Filter Tabs */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
           {CATEGORIES.map((cat) => {
             const count = cat.id === 'all' 
@@ -291,7 +250,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                 <div className="space-y-2.5 mb-6 pt-4 border-t border-slate-200/80">
                   <div className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
                     <FileCheck2 className="w-3.5 h-3.5 text-brand-600" />
-                    <span>Key Enterprise Deliverables:</span>
+                    <span>Included in This Sprint:</span>
                   </div>
                   {service.deliverables.map((item, idx) => (
                     <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
@@ -318,63 +277,62 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
                     <Clock className="w-3.5 h-3.5 text-brand-600" />
-                    <span>Avg: <strong className="text-slate-800">{service.timeline}</strong></span>
+                    <span>Sprint: <strong className="text-slate-800">{service.timeline}</strong></span>
                   </div>
 
-                  <a
-                    href="#contact"
+                  <button
                     onClick={() => onSelectService(service.title)}
                     className="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:text-brand-700 hover:underline group-hover:translate-x-1 transition-transform"
                   >
-                    <span>Request Scope</span>
+                    <span>Request Sprint</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Enterprise Delivery Assurance Banner */}
+        {/* Vibe Coding / AI-Native Delivery Assurance Banner */}
         <div className="mt-16 p-6 sm:p-8 rounded-2xl glass-panel border border-brand-500/20 shadow-lg shadow-brand-500/5">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center md:text-left">
             <div className="space-y-1">
               <div className="flex items-center justify-center md:justify-start gap-2 font-bold text-slate-900 text-sm">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>100% IP & Code Ownership</span>
+                <span>100% Code & IP Ownership</span>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Full Git repository transfer with zero vendor lock-in or proprietary runtime licensing.
+                Full Git repository transfer with clean code. No proprietary locks or recurring agency fees.
               </p>
             </div>
 
             <div className="space-y-1">
               <div className="flex items-center justify-center md:justify-start gap-2 font-bold text-slate-900 text-sm">
                 <ShieldCheck className="w-4 h-4 text-brand-600" />
-                <span>Security & OWASP Ready</span>
+                <span>Modern Clean Tech</span>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Strict input validation, role-based access control, cryptographic secrets management, and SSL.
+                Built on Next.js, React, Tailwind, and Supabase. Fast, reliable, and easily maintainable.
               </p>
             </div>
 
             <div className="space-y-1">
               <div className="flex items-center justify-center md:justify-start gap-2 font-bold text-slate-900 text-sm">
                 <Code2 className="w-4 h-4 text-cyan-600" />
-                <span>Modern Clean Architecture</span>
+                <span>Direct Founder Execution</span>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Modular TypeScript, automated Vitest/Playwright tests, and documented OpenAPI endpoints.
+                You work directly with the builder using cutting-edge AI tools (Cursor & Antigravity) for rapid delivery.
               </p>
             </div>
 
             <div className="space-y-1">
               <div className="flex items-center justify-center md:justify-start gap-2 font-bold text-slate-900 text-sm">
                 <Clock className="w-4 h-4 text-amber-500" />
-                <span>Guaranteed Sprint Timelines</span>
+                <span>2 to 7 Day Delivery</span>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
-                Fixed-price deliverables with milestones delivered in 3 to 14 days, supported by daily updates.
+                Clear fixed-price milestones delivered in days, with daily async previews and updates.
               </p>
             </div>
           </div>

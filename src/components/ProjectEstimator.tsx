@@ -14,28 +14,28 @@ interface FeatureOption {
 }
 
 const BASE_PROJECT_TYPES = [
-  { id: 'saas-mvp', name: 'Enterprise Fullstack Web Application', baseDays: 7, baseCostUSD: 1699, description: 'Next.js, React, TypeScript, multi-tenant database & responsive UI' },
-  { id: 'ai-copilot', name: 'Generative AI & Enterprise RAG Copilot', baseDays: 6, baseCostUSD: 1499, description: 'Custom LLM integration, document embeddings & semantic agent' },
-  { id: 'legacy-modernize', name: 'Legacy Modernization & Code Refactor', baseDays: 6, baseCostUSD: 1399, description: 'PHP/Legacy JS to strict TypeScript with regression test harness' },
-  { id: 'cloud-devops', name: 'Cloud Infrastructure & DevOps CI/CD', baseDays: 4, baseCostUSD: 999, description: 'Docker containerization, Nginx SSL, AWS setup & automated pipelines' },
-  { id: 'api-microservices', name: 'Scalable Backend APIs & Microservices', baseDays: 5, baseCostUSD: 1299, description: 'FastAPI/Node.js REST/GraphQL, Redis cache & OpenAPI documentation' },
-  { id: 'automation-pipes', name: 'Autonomous Workflow & Data Sync Pipes', baseDays: 4, baseCostUSD: 899, description: 'CRM/ERP sync, background worker queues & resilient webhooks' },
+  { id: 'web-mvp', name: 'Rapid Fullstack Web App & MVP', baseDays: 5, baseCostUSD: 1490, description: 'Next.js, React, Supabase PostgreSQL, user auth, payments & mobile-ready UI' },
+  { id: 'ai-chatbot', name: 'Custom AI Chatbot & Knowledge Assistant', baseDays: 4, baseCostUSD: 990, description: 'Gemini 2.0 / OpenAI API, document embeddings & semantic search chat widget' },
+  { id: 'landing-page', name: 'High-Converting Landing Page & Website', baseDays: 3, baseCostUSD: 490, description: 'Blazing fast Next.js & Tailwind, sub-second loads, SEO & lead forms' },
+  { id: 'admin-dashboard', name: 'Internal Admin Dashboard & CRM Portal', baseDays: 4, baseCostUSD: 950, description: 'CRUD data tables, search/filter, charts, role-based login & CSV export' },
+  { id: 'api-automation', name: 'Workflow Automation & Webhook Integration', baseDays: 3, baseCostUSD: 450, description: 'Stripe/Razorpay webhooks, WhatsApp alerts, Google Sheets & CRM sync' },
+  { id: 'redesign', name: 'Website Redesign & Modernization', baseDays: 3, baseCostUSD: 690, description: 'Transform slow WordPress/HTML sites into modern, high-speed Next.js/Tailwind' },
 ];
 
 const ADDON_FEATURES: FeatureOption[] = [
-  { id: 'auth-rbac', name: 'Enterprise Auth & RBAC (OAuth2 / Supabase)', days: 1, costUSD: 250, category: 'Security' },
-  { id: 'payments', name: 'Stripe / Razorpay Billing & Subscriptions', days: 1.5, costUSD: 350, category: 'Billing' },
-  { id: 'ai-search', name: 'pgvector Semantic Search & Document RAG', days: 2, costUSD: 450, category: 'AI' },
-  { id: 'admin-dash', name: 'Executive Analytics & Telemetry Dashboard', days: 2, costUSD: 390, category: 'Analytics' },
-  { id: 'third-party-api', name: 'CRM / ERP & Third-Party API Connectors', days: 1.5, costUSD: 300, category: 'Integrations' },
-  { id: 'testing-suite', name: 'End-to-End Automated Test Suite (Playwright)', days: 1.5, costUSD: 290, category: 'QA' },
-  { id: 'security-audit', name: 'OWASP Security Audit & Vulnerability Remediation', days: 1, costUSD: 280, category: 'DevSecOps' },
-  { id: 'docker-cicd', name: 'Multi-Stage Docker & GitHub Actions CI/CD', days: 1, costUSD: 260, category: 'DevOps' },
+  { id: 'auth-db', name: 'Supabase Auth & PostgreSQL Database Setup', days: 1, costUSD: 200, category: 'Database & Auth' },
+  { id: 'payments', name: 'Stripe or Razorpay Checkout & Subscriptions', days: 1, costUSD: 250, category: 'Billing' },
+  { id: 'rag-docs', name: 'AI Knowledge Base & PDF/FAQ Q&A (RAG)', days: 1.5, costUSD: 350, category: 'AI' },
+  { id: 'analytics-charts', name: 'Interactive Data Charts & Analytics (Recharts)', days: 1, costUSD: 190, category: 'Analytics' },
+  { id: 'whatsapp-email', name: 'Instant WhatsApp & Email Alert System', days: 1, costUSD: 180, category: 'Notifications' },
+  { id: 'sheets-crm', name: 'Google Sheets & CRM Webhook Sync', days: 1, costUSD: 180, category: 'Integrations' },
+  { id: 'seo-og', name: 'SEO Optimization & OpenGraph Preview Cards', days: 0.5, costUSD: 120, category: 'Marketing' },
+  { id: 'deploy-domain', name: 'Live Vercel / Cloudflare Setup & Custom Domain', days: 0.5, costUSD: 120, category: 'Deployment' },
 ];
 
 export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onPreFillScope }) => {
   const [selectedType, setSelectedType] = useState(BASE_PROJECT_TYPES[0].id);
-  const [selectedAddons, setSelectedAddons] = useState<string[]>(['auth-rbac', 'payments']);
+  const [selectedAddons, setSelectedAddons] = useState<string[]>(['auth-db', 'payments']);
   const [speedMode, setSpeedMode] = useState<'standard' | 'blitz'>('standard');
   const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
 
