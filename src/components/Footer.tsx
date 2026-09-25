@@ -1,5 +1,6 @@
 import React from 'react';
-import { Terminal, Mail, Globe, Shield, ArrowUp, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Terminal, Mail, Globe, Shield, ArrowUp, Building2, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -7,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-slate-200 bg-slate-100/60 pt-16 pb-12 text-slate-600 text-xs sm:text-sm overflow-hidden w-full">
+    <footer className="border-t border-slate-200 bg-slate-100/70 pt-16 pb-12 text-slate-600 text-xs sm:text-sm overflow-hidden w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-200">
           {/* Brand Info */}
@@ -47,35 +48,39 @@ export const Footer: React.FC = () => {
                 <Building2 className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                 <span>Legal Entity: <strong>Hackproof Technologies India Private Limited</strong></span>
               </div>
+              <div className="flex items-center gap-2 text-slate-500">
+                <MapPin className="w-3.5 h-3.5 text-rose-500 flex-shrink-0" />
+                <span>Serving Clients in Bengaluru, Mumbai, GIFT City, Delhi NCR & Ahmedabad</span>
+              </div>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links: Services & Solutions */}
           <div className="md:col-span-2 space-y-3">
-            <div className="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider font-mono">
-              Offerings
+            <div className="font-bold text-slate-900 text-xs uppercase tracking-wider font-mono">
+              Practice Areas
             </div>
             <ul className="space-y-2 text-xs">
-              <li><a href="#services" className="hover:text-brand-600 transition-colors">Fullstack Web Apps</a></li>
-              <li><a href="#services" className="hover:text-brand-600 transition-colors">Legacy Modernization</a></li>
-              <li><a href="#services" className="hover:text-brand-600 transition-colors">Cloud & DevOps SRE</a></li>
-              <li><a href="#services" className="hover:text-brand-600 transition-colors">Enterprise AI & RAG</a></li>
-              <li><a href="#services" className="hover:text-brand-600 transition-colors">Backend APIs & Microservices</a></li>
-              <li><a href="#services" className="hover:text-brand-600 transition-colors">DevSecOps & QA Audit</a></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Fullstack Web Apps</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Legacy Modernization</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Cloud & DevOps SRE</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">Enterprise AI & RAG</Link></li>
+              <li><Link to="/solutions" className="hover:text-brand-600 transition-colors">Industry Solutions</Link></li>
+              <li><Link to="/services" className="hover:text-brand-600 transition-colors">DevSecOps & QA</Link></li>
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Company & Engagement */}
           <div className="md:col-span-2 space-y-3">
             <div className="font-bold text-slate-900 text-xs uppercase tracking-wider font-mono">
-              Company
+              Explore
             </div>
             <ul className="space-y-2 text-xs">
-              <li><a href="#why-us" className="hover:text-brand-600 transition-colors">Why Janusoft</a></li>
-              <li><a href="#estimator" className="hover:text-brand-600 transition-colors">Scope Estimator</a></li>
-              <li><a href="#process" className="hover:text-brand-600 transition-colors">Our Playbook</a></li>
-              <li><a href="#pricing" className="hover:text-brand-600 transition-colors">Pricing & Retainers</a></li>
-              <li><a href="#faq" className="hover:text-brand-600 transition-colors">FAQ</a></li>
+              <li><Link to="/engagement" className="hover:text-brand-600 transition-colors">Hiring Models</Link></li>
+              <li><Link to="/estimator" className="hover:text-brand-600 transition-colors">Scope Estimator</Link></li>
+              <li><Link to="/pricing" className="hover:text-brand-600 transition-colors">Pricing & Plans</Link></li>
+              <li><Link to="/contact" className="hover:text-brand-600 transition-colors">Contact Founder</Link></li>
+              <li><Link to="/engagement" className="text-emerald-700 font-semibold hover:underline">48h Prototype ($390)</Link></li>
             </ul>
           </div>
 
@@ -87,10 +92,10 @@ export const Footer: React.FC = () => {
             <div className="p-4 rounded-xl glass-panel border border-slate-200 space-y-2">
               <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600">
                 <Shield className="w-3.5 h-3.5" />
-                <span>100% IP Transfer</span>
+                <span>100% IP Transfer & GST Billing</span>
               </div>
               <p className="text-[11px] text-slate-500 leading-snug">
-                You retain complete, exclusive ownership of all code, architecture, and IP produced during your sprints.
+                You retain complete, exclusive ownership of all code, architecture, and IP. Billed through Hackproof Technologies India Pvt Ltd.
               </p>
             </div>
           </div>

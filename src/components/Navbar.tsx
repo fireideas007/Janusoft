@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Menu, X, ArrowRight, Terminal, Zap } from 'lucide-react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { Sparkles, Menu, X, ArrowRight, Terminal, Zap, PhoneCall } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,13 +15,18 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'Solutions', href: '#solutions' },
-    { name: 'Engagement', href: '#engagement-models' },
-    { name: 'Estimator', href: '#estimator' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Why Us', href: '#why-us' },
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Solutions', path: '/solutions' },
+    { name: 'Engagement', path: '/engagement' },
+    { name: 'Scope Estimator', path: '/estimator' },
+    { name: 'Pricing', path: '/pricing' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -27,13 +34,13 @@ export const Navbar: React.FC = () => {
       className={`fixed top-0 left-0 right-0 w-full max-w-full z-50 transition-all duration-300 ${
         scrolled
           ? 'glass-panel py-3 shadow-md shadow-slate-200/50'
-          : 'bg-transparent py-5'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-cyan-500 to-indigo-600 p-0.5 shadow-md shadow-brand-500/20 group-hover:shadow-brand-500/40 transition-all duration-300">
               <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
                 <Terminal className="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
@@ -52,35 +59,41 @@ export const Navbar: React.FC = () => {
                 AI-Native IT Agency
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-1.5 bg-white/70 p-1.5 rounded-2xl border border-slate-200/80 shadow-sm backdrop-blur">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors"
+                to={link.path}
+                className={({ isActive }) =>
+                  `px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-all ${
+                    isActive
+                      ? 'bg-brand-600 text-white font-semibold shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
+                  }`
+                }
               >
                 {link.name}
-              </a>
+              </NavLink>
             ))}
           </nav>
 
           {/* Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
-            <a
-              href="#prototype-offer"
+          <div className="hidden sm:flex items-center gap-2.5">
+            <Link
+              to="/engagement"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-brand-600 via-brand-500 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-md shadow-brand-600/25 hover:shadow-brand-600/40 active:scale-[0.98] transition-all"
             >
               <Zap className="w-4 h-4 text-amber-300" />
               <span>48h Prototype ($390)</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="flex sm:hidden items-center gap-2">
+          {/* Mobile menu toggle */}
+          <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-700 hover:bg-slate-200/80 transition-colors"
@@ -94,34 +107,41 @@ export const Navbar: React.FC = () => {
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
           <div className="lg:hidden mt-3 p-4 rounded-2xl glass-panel border border-slate-200 shadow-xl space-y-3 animate-in fade-in duration-200">
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col space-y-1.5">
               {navLinks.map((link) => (
-                <a
+                <NavLink
                   key={link.name}
-                  href={link.href}
+                  to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-brand-600 transition-colors"
+                  className={({ isActive }) =>
+                    `px-3 py-2 rounded-xl text-sm font-medium transition-all ${
+                      isActive
+                        ? 'bg-brand-600 text-white font-semibold'
+                        : 'text-slate-700 hover:bg-slate-100 hover:text-brand-600'
+                    }`
+                  }
                 >
                   {link.name}
-                </a>
+                </NavLink>
               ))}
             </nav>
             <div className="pt-2 border-t border-slate-200/80 flex flex-col gap-2">
-              <a
-                href="#prototype-offer"
+              <Link
+                to="/engagement"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-brand-600 to-indigo-600 shadow-md"
               >
                 <Zap className="w-4 h-4 text-amber-300" />
                 <span>48h Prototype Sprint ($390)</span>
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs text-slate-700 bg-slate-100 hover:bg-slate-200"
               >
-                <span>Book Strategy Call</span>
-              </a>
+                <PhoneCall className="w-3.5 h-3.5 text-cyan-600" />
+                <span>Talk with Founder</span>
+              </Link>
             </div>
           </div>
         )}
