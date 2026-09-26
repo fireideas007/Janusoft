@@ -270,6 +270,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         <option value="Internal Admin Dashboards & CRM Portals">Internal Admin Dashboards & CRM Portals</option>
                         <option value="Workflow Automations & Webhook Integrations">Workflow Automations & Webhook Integrations</option>
                         <option value="Website Redesign & Modernization">Website Redesign & Modernization</option>
+                        <option value="Performance Marketing & Paid Ad Campaigns">Performance Marketing & Paid Ad Campaigns (Meta/Google Ads)</option>
+                        <option value="Social Media Management & Organic Growth">Social Media Management & Organic Growth</option>
                         <option value="48-Hour Rapid POC Prototype ($390 / ₹29,990)">48-Hour Rapid POC Prototype ($390 / ₹29,990)</option>
                         <option value="Dedicated Monthly Senior Engineering Retainer">Dedicated Monthly Senior Engineering Retainer</option>
                       </select>

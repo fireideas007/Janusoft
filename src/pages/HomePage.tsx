@@ -22,7 +22,9 @@ import {
   CreditCard,
   Building2,
   HeartPulse,
-  Truck
+  Truck,
+  TrendingUp,
+  Share2
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -99,6 +101,24 @@ export const HomePage: React.FC<HomePageProps> = ({
       timeline: '3 - 5 Days',
       badge: 'Fresh Upgrade',
       desc: 'Transform slow, clunky sites into sleek, mobile-optimized Next.js web applications.',
+    },
+    {
+      title: 'Performance Marketing & Paid Ad Funnels',
+      tagline: 'Meta (FB/IG) & Google Ads funnels to acquire paying clients.',
+      icon: TrendingUp,
+      iconColor: 'text-rose-600 bg-rose-500/10 border-rose-500/20',
+      timeline: '3 - 5 Days Setup',
+      badge: 'High ROI',
+      desc: 'High-converting ad copy, visual creatives, Meta Pixel & CAPI tracking, and dedicated lead capture funnels.',
+    },
+    {
+      title: 'Social Media Management & Growth',
+      tagline: 'Build authority & inbound deal flow on LinkedIn & X/Twitter.',
+      icon: Share2,
+      iconColor: 'text-pink-600 bg-pink-500/10 border-pink-500/20',
+      timeline: 'Monthly / Ongoing',
+      badge: 'Brand Authority',
+      desc: 'Content calendars, custom carousel slide designs, viral hook writing, and scheduled multi-channel distribution.',
     },
   ];
 

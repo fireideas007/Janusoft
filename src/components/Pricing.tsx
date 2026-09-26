@@ -198,6 +198,29 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
           ))}
         </div>
 
+        {/* Growth & Performance Marketing Addon Callout */}
+        <div className="mt-10 max-w-4xl mx-auto rounded-2xl bg-gradient-to-r from-rose-50 via-pink-50 to-indigo-50 border border-rose-200/80 p-6 flex flex-col md:flex-row items-center justify-between gap-5 shadow-sm">
+          <div className="space-y-1 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-700 text-[11px] font-semibold">
+              <Zap className="w-3 h-3 text-rose-600" />
+              <span>Full-Funnel Growth Add-on</span>
+            </div>
+            <h4 className="text-base font-bold text-slate-900">
+              Need Social Media & Performance Marketing for Your Launch?
+            </h4>
+            <p className="text-xs text-slate-600 max-w-xl">
+              Pair your software build with our Meta/Google Ads campaign setup ($590) or monthly social media authority management ($490) to drive paying clients from day 1.
+            </p>
+          </div>
+          <button
+            onClick={() => onSelectPlan('Performance Marketing & Growth Addon')}
+            className="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-rose-600 hover:bg-rose-500 text-white shadow-md shadow-rose-600/20 transition-all hover:scale-[1.02]"
+          >
+            <span>Inquire Growth Sprint</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
         {/* IP & Money-Back Notice */}
         <div className="mt-14 max-w-3xl mx-auto rounded-2xl glass-panel border border-brand-500/20 p-5 text-center flex flex-col sm:flex-row items-center justify-center gap-4 text-xs text-slate-600">
           <div className="flex items-center gap-2 font-semibold text-slate-900">

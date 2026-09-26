@@ -1,6 +1,6 @@
 export interface ServiceItem {
   id: string;
-  category: 'web-apps' | 'ai-bots' | 'websites' | 'dashboards' | 'automations';
+  category: 'web-apps' | 'ai-bots' | 'websites' | 'dashboards' | 'automations' | 'marketing';
   title: string;
   tagline: string;
   description: string;

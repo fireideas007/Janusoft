@@ -13,7 +13,9 @@ import {
   FileCheck2,
   Code2,
   ShieldCheck,
-  Zap
+  Zap,
+  TrendingUp,
+  Share2
 } from 'lucide-react';
 import { ServiceItem } from '../types';
 
@@ -130,9 +132,45 @@ const SERVICES_DATA: ServiceItem[] = [
     timeline: '3 to 5 Days',
     badge: 'Fresh Upgrade',
   },
+  {
+    id: 'performance-marketing',
+    category: 'marketing',
+    title: 'Performance Marketing & Paid Ad Campaigns',
+    tagline: 'High-ROI Meta (FB/IG) & Google Ads funnels configured to acquire paying customers.',
+    description: 'We build and execute laser-targeted paid acquisition campaigns. From Meta Pixel & Google Tag Manager tracking setups to high-converting ad copy, visual creative design, and automated lead capture funnels.',
+    iconName: 'TrendingUp',
+    deliverables: [
+      'Complete Meta (Facebook/Instagram) & Google Ads campaign setup & audience targeting',
+      'Pixel tracking, Google Tag Manager & Conversions API (CAPI) integration',
+      'High-converting ad copy variations & visual creative graphics crafted for conversions',
+      'Dedicated landing page opt-in & lead qualification funnel optimization',
+      'Transparent weekly ROI analytics dashboard tracking CAC, ROAS & CPL',
+    ],
+    techStack: ['Meta Ads', 'Google Ads', 'GA4', 'Conversions API', 'Canva / Figma'],
+    timeline: '3 to 5 Days Setup',
+    badge: 'Growth Engine',
+  },
+  {
+    id: 'social-media-growth',
+    category: 'marketing',
+    title: 'Social Media Management & Organic Growth',
+    tagline: 'Consistent authority-building content across LinkedIn, X/Twitter & Instagram.',
+    description: 'Grow brand credibility and warm inbound deal flow with structured social media management. We handle monthly content calendars, visually sharp carousel slides, hook writing, and organic distribution.',
+    iconName: 'Share2',
+    deliverables: [
+      'Monthly multi-channel content calendar tailored to your industry & niche',
+      'Engaging carousel slides, infographics & punchy visual post designs',
+      'Viral hook writing & thought leadership copy for LinkedIn & X/Twitter',
+      'Automated multi-platform scheduling & hashtag optimization',
+      'Monthly audience growth, impressions & engagement report',
+    ],
+    techStack: ['LinkedIn Growth', 'X / Twitter', 'Instagram', 'Canva / AI Graphics', 'Buffer / Notion'],
+    timeline: 'Monthly / Ongoing',
+    badge: 'Brand Authority',
+  },
 ];
 
-type ServiceCategory = 'all' | 'web-apps' | 'ai-bots' | 'websites' | 'dashboards' | 'automations';
+type ServiceCategory = 'all' | 'web-apps' | 'ai-bots' | 'websites' | 'dashboards' | 'automations' | 'marketing';
 
 const CATEGORIES: { id: ServiceCategory; label: string }[] = [
   { id: 'all', label: 'All Services' },
@@ -141,6 +179,7 @@ const CATEGORIES: { id: ServiceCategory; label: string }[] = [
   { id: 'websites', label: 'Websites & Landing Pages' },
   { id: 'dashboards', label: 'Admin Dashboards' },
   { id: 'automations', label: 'API Automations' },
+  { id: 'marketing', label: 'Social & Performance Marketing' },
 ];
 
 export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
@@ -164,6 +203,10 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
         return <Workflow className="w-6 h-6 text-emerald-600" />;
       case 'RefreshCw':
         return <RefreshCw className="w-6 h-6 text-violet-600" />;
+      case 'TrendingUp':
+        return <TrendingUp className="w-6 h-6 text-rose-600" />;
+      case 'Share2':
+        return <Share2 className="w-6 h-6 text-pink-600" />;
       default:
         return <Zap className="w-6 h-6 text-brand-600" />;
     }

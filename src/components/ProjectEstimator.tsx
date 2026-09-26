@@ -20,6 +20,8 @@ const BASE_PROJECT_TYPES = [
   { id: 'admin-dashboard', name: 'Internal Admin Dashboard & CRM Portal', baseDays: 4, baseCostUSD: 950, description: 'CRUD data tables, search/filter, charts, role-based login & CSV export' },
   { id: 'api-automation', name: 'Workflow Automation & Webhook Integration', baseDays: 3, baseCostUSD: 450, description: 'Stripe/Razorpay webhooks, WhatsApp alerts, Google Sheets & CRM sync' },
   { id: 'redesign', name: 'Website Redesign & Modernization', baseDays: 3, baseCostUSD: 690, description: 'Transform slow WordPress/HTML sites into modern, high-speed Next.js/Tailwind' },
+  { id: 'perf-marketing', name: 'Performance Marketing & Paid Ad Funnel', baseDays: 4, baseCostUSD: 590, description: 'Meta & Google Ads setup, conversion tracking, ad copy & lead qualification' },
+  { id: 'social-growth', name: 'Social Media Management & Growth Engine', baseDays: 3, baseCostUSD: 490, description: 'Content calendar, LinkedIn/Twitter/IG authority, carousels & distribution' },
 ];
 
 const ADDON_FEATURES: FeatureOption[] = [
@@ -29,6 +31,9 @@ const ADDON_FEATURES: FeatureOption[] = [
   { id: 'analytics-charts', name: 'Interactive Data Charts & Analytics (Recharts)', days: 1, costUSD: 190, category: 'Analytics' },
   { id: 'whatsapp-email', name: 'Instant WhatsApp & Email Alert System', days: 1, costUSD: 180, category: 'Notifications' },
   { id: 'sheets-crm', name: 'Google Sheets & CRM Webhook Sync', days: 1, costUSD: 180, category: 'Integrations' },
+  { id: 'meta-pixel', name: 'Meta Pixel, GA4 & Conversions API Setup', days: 1, costUSD: 190, category: 'Marketing' },
+  { id: 'ad-creatives', name: 'High-Converting Ad Creatives & Video Hook Copy', days: 1, costUSD: 220, category: 'Marketing' },
+  { id: 'linkedin-growth', name: 'LinkedIn Founder Personal Branding & Carousels', days: 1, costUSD: 200, category: 'Social Media' },
   { id: 'seo-og', name: 'SEO Optimization & OpenGraph Preview Cards', days: 0.5, costUSD: 120, category: 'Marketing' },
   { id: 'deploy-domain', name: 'Live Vercel / Cloudflare Setup & Custom Domain', days: 0.5, costUSD: 120, category: 'Deployment' },
 ];
