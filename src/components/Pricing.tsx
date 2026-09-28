@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import { Check, Sparkles, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Check, Sparkles, ArrowRight, ShieldCheck, Zap, Globe } from 'lucide-react';
 import { PricingPlan } from '../types';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface PricingProps {
   onSelectPlan: (planName: string) => void;
 }
 
 export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
-  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
-  const USD_TO_INR = 86;
+  const { currency, setCurrency, formatPrice, prototypePrice, detectedCountry } = useCurrency();
 
   const plans: PricingPlan[] = [
     {
       id: 'poc-pilot',
       name: '48h Rapid POC Pilot',
-      price: currency === 'USD' ? '$390' : '₹29,990',
+      price: prototypePrice,
       period: 'flat 48h delivery',
       description: 'Lowest risk entry point. Clickable working prototype & architecture blueprint delivered in 48 hours.',
       bestFor: 'Founders Testing Idea or Velocity',
@@ -32,7 +31,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
     {
       id: 'mvp-sprint',
       name: 'Rapid MVP Sprint',
-      price: currency === 'USD' ? '$1,890' : `₹${(1890 * USD_TO_INR).toLocaleString()}`,
+      price: formatPrice(1890),
       period: 'per sprint / one-time',
       description: 'Ideal for early-stage founders & teams needing a market-ready web app or SaaS launched in days.',
       bestFor: 'Startups & Product Launches',
@@ -50,7 +49,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
     {
       id: 'ai-retainer',
       name: 'Dedicated AI Retainer',
-      price: currency === 'USD' ? '$3,490' : `₹${(3490 * USD_TO_INR).toLocaleString()}`,
+      price: formatPrice(3490),
       period: 'per month',
       description: 'Your on-demand senior AI-native engineering partner. Continuous iterations, feature rollouts, and support.',
       bestFor: 'Growing Businesses & Scaleups',
@@ -101,24 +100,32 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
             No surprise invoices or billable-hour tricks. From a 48-hour low-risk pilot to full enterprise outcome sprints.
           </p>
 
-          {/* Currency Switcher */}
-          <div className="mt-6 inline-flex items-center gap-1 bg-slate-200/80 p-1 rounded-xl text-xs font-mono">
-            <button
-              onClick={() => setCurrency('USD')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              USD ($)
-            </button>
-            <button
-              onClick={() => setCurrency('INR')}
-              className={`px-3 py-1.5 rounded-lg transition-all ${
-                currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              INR (₹)
-            </button>
+          {/* Currency Switcher with Geo Indicator */}
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="inline-flex items-center gap-1 bg-slate-200/80 p-1 rounded-xl text-xs font-mono">
+              <button
+                onClick={() => setCurrency('USD')}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                USD ($)
+              </button>
+              <button
+                onClick={() => setCurrency('INR')}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                INR (₹)
+              </button>
+            </div>
+            <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500 bg-white/80 px-2.5 py-1 rounded-lg border border-slate-200 shadow-xs">
+              <Globe className="w-3.5 h-3.5 text-cyan-600" />
+              <span>
+                {detectedCountry === 'IN' ? '📍 Auto-detected India (INR)' : '📍 Auto-detected International (USD)'}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -209,7 +216,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
               Need Social Media & Performance Marketing for Your Launch?
             </h4>
             <p className="text-xs text-slate-600 max-w-xl">
-              Pair your software build with our Meta/Google Ads campaign setup ($590) or monthly social media authority management ($490) to drive paying clients from day 1.
+              Pair your software build with our Meta/Google Ads campaign setup ({formatPrice(590)}) or monthly social media authority management ({formatPrice(490)}) to drive paying clients from day 1.
             </p>
           </div>
           <button

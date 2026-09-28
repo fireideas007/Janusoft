@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { CurrencyProvider } from './context/CurrencyContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
+import { QuickContactWidget } from './components/QuickContactWidget';
 
 import { HomePage } from './pages/HomePage';
 import { ServicesPage } from './pages/ServicesPage';
@@ -118,6 +120,7 @@ export const AppContent: React.FC = () => {
         </Routes>
       </main>
 
+      <QuickContactWidget />
       <Footer />
     </div>
   );
@@ -126,7 +129,9 @@ export const AppContent: React.FC = () => {
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <AppContent />
+      <CurrencyProvider>
+        <AppContent />
+      </CurrencyProvider>
     </BrowserRouter>
   );
 };

@@ -26,6 +26,7 @@ import {
   TrendingUp,
   Share2
 } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface HomePageProps {
   onSelectService: (service: string) => void;
@@ -41,6 +42,7 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectPlan,
 }) => {
   const navigate = useNavigate();
+  const { prototypePrice } = useCurrency();
 
   const handleScopeSelect = (scope: string) => {
     onPreFillScope(scope);
@@ -317,7 +319,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <div className="space-y-2.5 text-xs text-slate-600 pt-1">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span><strong>48h POC Pilot ($390):</strong> Clickable working prototype in 48 hours</span>
+                    <span><strong>48h POC Pilot ({prototypePrice}):</strong> Clickable working prototype in 48 hours</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />

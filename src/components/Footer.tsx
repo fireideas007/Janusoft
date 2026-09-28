@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Terminal, Mail, Globe, Shield, ArrowUp, Building2, MapPin } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 export const Footer: React.FC = () => {
+  const { prototypePrice } = useCurrency();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -81,7 +83,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/estimator" className="hover:text-brand-600 transition-colors">Scope Estimator</Link></li>
               <li><Link to="/pricing" className="hover:text-brand-600 transition-colors">Pricing & Plans</Link></li>
               <li><Link to="/contact" className="hover:text-brand-600 transition-colors">Contact Founder</Link></li>
-              <li><Link to="/engagement" className="text-emerald-700 font-semibold hover:underline">48h Prototype ($390)</Link></li>
+              <li><Link to="/engagement" className="text-emerald-700 font-semibold hover:underline">48h Prototype ({prototypePrice})</Link></li>
             </ul>
           </div>
 

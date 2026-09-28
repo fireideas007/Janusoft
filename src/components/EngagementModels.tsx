@@ -1,11 +1,14 @@
 import React from 'react';
-import { Layers, Zap, Clock, ShieldCheck, ArrowRight, CheckCircle2, UserCheck, Sparkles, Building2 } from 'lucide-react';
+import { Layers, Zap, Clock, ShieldCheck, ArrowRight, CheckCircle2, UserCheck, Sparkles, Building2, Globe } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface EngagementModelsProps {
   onSelectModel: (modelName: string) => void;
 }
 
 export const EngagementModels: React.FC<EngagementModelsProps> = ({ onSelectModel }) => {
+  const { currency, setCurrency, prototypePrice, detectedCountry } = useCurrency();
+
   const models = [
     {
       id: 'pilot',
@@ -13,7 +16,7 @@ export const EngagementModels: React.FC<EngagementModelsProps> = ({ onSelectMode
       badgeColor: 'bg-emerald-500/10 text-emerald-700 border-emerald-500/30',
       title: '48-Hour Rapid POC Pilot',
       tagline: 'De-risk before full commitment. Working prototype in 48 hours.',
-      investment: '$390 / ₹29,990',
+      investment: prototypePrice,
       period: 'flat one-time fee',
       creditedNote: '100% Credited to your full build',
       description: 'Ideal for founders and tech leaders who want to see working code and verified architecture before greenlighting full development.',
@@ -33,7 +36,7 @@ export const EngagementModels: React.FC<EngagementModelsProps> = ({ onSelectMode
       badgeColor: 'bg-brand-500/10 text-brand-700 border-brand-500/30',
       title: 'Fixed-Price Milestone Sprints',
       tagline: 'Guaranteed delivery scope, fixed timeline, zero surprises.',
-      investment: 'From $1,690 / ₹1.45L',
+      investment: currency === 'INR' ? 'From ₹1,45,000' : 'From $1,690',
       period: 'per milestone sprint',
       creditedNote: 'Fixed scope • Zero hourly overages',
       description: 'Ideal for new web SaaS launches, legacy app modernization, or specialized LLM/RAG copilot integration with defined deliverables.',
@@ -53,7 +56,7 @@ export const EngagementModels: React.FC<EngagementModelsProps> = ({ onSelectMode
       badgeColor: 'bg-indigo-500/10 text-indigo-700 border-indigo-500/30',
       title: 'Dedicated AI-Augmented Engineer',
       tagline: 'Senior technical partner on demand with 3x-4x developer velocity.',
-      investment: '$3,490 / ₹3,00,000',
+      investment: currency === 'INR' ? '₹3,00,000' : '$3,490',
       period: 'per month / retainer',
       creditedNote: 'No long-term lock-in • Pause or cancel anytime',
       description: 'Inspired by modern agile pods. Direct senior tech lead execution accelerated by frontier AI tools to ship continuous features and maintain cloud infrastructure.',
@@ -83,6 +86,34 @@ export const EngagementModels: React.FC<EngagementModelsProps> = ({ onSelectMode
           <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
             Inspired by global IT leaders like DRC Systems & MethodHub, optimized for unprecedented agility. Choose the collaboration structure that fits your roadmap.
           </p>
+
+          {/* Currency Switcher with Geo Indicator */}
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="inline-flex items-center gap-1 bg-slate-200/80 p-1 rounded-xl text-xs font-mono">
+              <button
+                onClick={() => setCurrency('USD')}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                USD ($)
+              </button>
+              <button
+                onClick={() => setCurrency('INR')}
+                className={`px-3 py-1.5 rounded-lg transition-all ${
+                  currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow' : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                INR (₹)
+              </button>
+            </div>
+            <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500 bg-white/80 px-2.5 py-1 rounded-lg border border-slate-200 shadow-xs">
+              <Globe className="w-3.5 h-3.5 text-cyan-600" />
+              <span>
+                {detectedCountry === 'IN' ? '📍 Auto-detected India (INR)' : '📍 Auto-detected International (USD)'}
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">

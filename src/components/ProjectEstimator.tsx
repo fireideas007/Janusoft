@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Calculator, Check, ArrowRight, Sparkles, Clock, ShieldCheck, Zap } from 'lucide-react';
+import { Calculator, Check, ArrowRight, Sparkles, Clock, ShieldCheck, Zap, Globe } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface ProjectEstimatorProps {
   onPreFillScope: (scopeSummary: string) => void;
@@ -39,14 +40,12 @@ const ADDON_FEATURES: FeatureOption[] = [
 ];
 
 export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onPreFillScope }) => {
+  const { currency, setCurrency, formatPrice, detectedCountry } = useCurrency();
   const [selectedType, setSelectedType] = useState(BASE_PROJECT_TYPES[0].id);
   const [selectedAddons, setSelectedAddons] = useState<string[]>(['auth-db', 'payments']);
   const [speedMode, setSpeedMode] = useState<'standard' | 'blitz'>('standard');
-  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
 
-  const USD_TO_INR_RATE = 86;
-
-  const currentBase = BASE_PROJECT_TYPES.find((t) => t.id === selectedType)!;
+  const currentBase = BASE_PROJECT_TYPES.find((t) => t.id === selectedType) || BASE_PROJECT_TYPES[0];
 
   const toggleAddon = (id: string) => {
     if (selectedAddons.includes(id)) {
@@ -72,12 +71,7 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onPreFillSco
     }, 0);
 
   const finalCostUSD = speedMode === 'blitz' ? Math.round(rawCostUSD * 1.25) : rawCostUSD;
-  const finalCostINR = Math.round(finalCostUSD * USD_TO_INR_RATE);
-
-  const formattedCost =
-    currency === 'USD'
-      ? `$${finalCostUSD.toLocaleString()}`
-      : `₹${finalCostINR.toLocaleString()}`;
+  const formattedCost = formatPrice(finalCostUSD);
 
   const handleTransferToContact = () => {
     const addonNames = selectedAddons
@@ -226,23 +220,28 @@ export const ProjectEstimator: React.FC<ProjectEstimatorProps> = ({ onPreFillSco
                   Estimated Summary
                 </span>
                 {/* Currency Switcher */}
-                <div className="flex items-center gap-1 bg-slate-200/80 p-1 rounded-lg text-xs font-mono">
-                  <button
-                    onClick={() => setCurrency('USD')}
-                    className={`px-2 py-0.5 rounded transition-all ${
-                      currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow-sm' : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    USD
-                  </button>
-                  <button
-                    onClick={() => setCurrency('INR')}
-                    className={`px-2 py-0.5 rounded transition-all ${
-                      currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow-sm' : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    INR (₹)
-                  </button>
+                <div className="flex items-center gap-1.5">
+                  <span className="hidden sm:inline text-[10px] font-mono text-slate-500">
+                    {detectedCountry === 'IN' ? '📍 India' : '📍 Global'}
+                  </span>
+                  <div className="flex items-center gap-1 bg-slate-200/80 p-1 rounded-lg text-xs font-mono">
+                    <button
+                      onClick={() => setCurrency('USD')}
+                      className={`px-2 py-0.5 rounded transition-all ${
+                        currency === 'USD' ? 'bg-brand-600 text-white font-bold shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      USD
+                    </button>
+                    <button
+                      onClick={() => setCurrency('INR')}
+                      className={`px-2 py-0.5 rounded transition-all ${
+                        currency === 'INR' ? 'bg-brand-600 text-white font-bold shadow-sm' : 'text-slate-600 hover:text-slate-900'
+                      }`}
+                    >
+                      INR (₹)
+                    </button>
+                  </div>
                 </div>
               </div>
 

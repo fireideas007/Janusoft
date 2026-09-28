@@ -2,8 +2,11 @@ import React from 'react';
 import { Sparkles, ArrowRight, ShieldCheck, Zap, Code2, Users2, Calendar, Clock, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { TerminalSimulation } from './TerminalSimulation';
+import { useCurrency } from '../context/CurrencyContext';
 
 export const Hero: React.FC = () => {
+  const { prototypePrice } = useCurrency();
+
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden w-full">
       {/* Background radial glow - strictly contained to avoid mobile gutter */}
@@ -20,7 +23,7 @@ export const Hero: React.FC = () => {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-700 text-xs sm:text-sm font-semibold mb-6 shadow-sm hover:bg-brand-500/15 transition-colors"
           >
             <Zap className="w-4 h-4 text-brand-600 fill-brand-600" />
-            <span>Zero-Risk Entry: 48-Hour Working Prototype ($390 • 100% Refundable)</span>
+            <span>Zero-Risk Entry: 48-Hour Working Prototype ({prototypePrice} • 100% Refundable)</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
 
@@ -44,7 +47,7 @@ export const Hero: React.FC = () => {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-brand-600 via-brand-500 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 shadow-xl shadow-brand-600/30 hover:shadow-brand-600/50 hover:-translate-y-0.5 transition-all"
             >
               <Zap className="w-5 h-5 text-amber-300" />
-              <span>Claim 48h Prototype ($390)</span>
+              <span>Claim 48h Prototype ({prototypePrice})</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
 

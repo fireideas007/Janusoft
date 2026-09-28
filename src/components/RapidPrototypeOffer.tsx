@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Zap, Clock, ShieldCheck, CheckCircle2, ArrowRight, Sparkles, MessageSquare, Terminal, FileCode2 } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface RapidPrototypeOfferProps {
   onSelectOffer: (details: string) => void;
 }
 
 export const RapidPrototypeOffer: React.FC<RapidPrototypeOfferProps> = ({ onSelectOffer }) => {
-  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
+  const { currency, setCurrency, prototypePrice, detectedCountry } = useCurrency();
 
-  const priceText = currency === 'USD' ? '$390' : '₹29,990';
-  const usdEquiv = currency === 'USD' ? '$390' : '₹29,990';
+  const priceText = prototypePrice;
 
   const handleClaim = () => {
     onSelectOffer(`48-Hour Working Prototype Sprint (${priceText}). Please reserve a slot and send kickoff requirements.`);
@@ -89,24 +89,29 @@ export const RapidPrototypeOffer: React.FC<RapidPrototypeOfferProps> = ({ onSele
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">
                     Pilot Sprint Package
                   </span>
-                  {/* Currency selector */}
-                  <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg text-[11px] font-mono">
-                    <button
-                      onClick={() => setCurrency('USD')}
-                      className={`px-2 py-0.5 rounded transition-all ${
-                        currency === 'USD' ? 'bg-brand-600 text-white font-bold' : 'text-slate-600'
-                      }`}
-                    >
-                      USD
-                    </button>
-                    <button
-                      onClick={() => setCurrency('INR')}
-                      className={`px-2 py-0.5 rounded transition-all ${
-                        currency === 'INR' ? 'bg-brand-600 text-white font-bold' : 'text-slate-600'
-                      }`}
-                    >
-                      INR (₹)
-                    </button>
+                  {/* Currency selector with Geo Indicator */}
+                  <div className="flex items-center gap-1.5">
+                    <span className="hidden sm:inline text-[10px] font-mono text-slate-500">
+                      {detectedCountry === 'IN' ? '📍 India' : '📍 Global'}
+                    </span>
+                    <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-lg text-[11px] font-mono">
+                      <button
+                        onClick={() => setCurrency('USD')}
+                        className={`px-2 py-0.5 rounded transition-all ${
+                          currency === 'USD' ? 'bg-brand-600 text-white font-bold' : 'text-slate-600'
+                        }`}
+                      >
+                        USD
+                      </button>
+                      <button
+                        onClick={() => setCurrency('INR')}
+                        className={`px-2 py-0.5 rounded transition-all ${
+                          currency === 'INR' ? 'bg-brand-600 text-white font-bold' : 'text-slate-600'
+                        }`}
+                      >
+                        INR (₹)
+                      </button>
+                    </div>
                   </div>
                 </div>
 

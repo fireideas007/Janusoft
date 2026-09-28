@@ -4,6 +4,7 @@ import { EngagementModels } from '../components/EngagementModels';
 import { RapidPrototypeOffer } from '../components/RapidPrototypeOffer';
 import { TrustedInIndia } from '../components/TrustedInIndia';
 import { Sparkles, Check, ArrowRight, ShieldCheck } from 'lucide-react';
+import { useCurrency } from '../context/CurrencyContext';
 
 interface EngagementPageProps {
   onSelectModel: (model: string) => void;
@@ -12,6 +13,7 @@ interface EngagementPageProps {
 
 export const EngagementPage: React.FC<EngagementPageProps> = ({ onSelectModel, onSelectOffer }) => {
   const navigate = useNavigate();
+  const { currency, prototypePrice } = useCurrency();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -36,9 +38,9 @@ export const EngagementPage: React.FC<EngagementPageProps> = ({ onSelectModel, o
     },
     {
       feature: 'Financial Commitment',
-      pilot: 'Flat $390 / ₹29,990 (100% credited)',
-      fixed: 'Fixed milestone bid, zero surprises',
-      retainer: 'Monthly subscription, pause anytime',
+      pilot: `Flat ${prototypePrice} (100% credited)`,
+      fixed: currency === 'INR' ? 'Fixed milestone bid (from ₹1,45,000)' : 'Fixed milestone bid (from $1,690)',
+      retainer: currency === 'INR' ? '₹3,00,000 / month, pause anytime' : '$3,490 / month, pause anytime',
     },
     {
       feature: 'Turnaround SLA',
