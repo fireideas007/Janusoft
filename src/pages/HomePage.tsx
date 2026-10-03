@@ -21,6 +21,7 @@ import {
   Phone
 } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
+import { submitLead } from '../services/leadService';
 
 interface HomePageProps {
   onSelectService: (service: string) => void;
@@ -184,8 +185,15 @@ export const HomePage: React.FC<HomePageProps> = ({
     window.open(url, '_blank');
   };
 
-  const handleSendLeadOnWhatsApp = (e: React.FormEvent) => {
+  const handleSendLeadOnWhatsApp = async (e: React.FormEvent) => {
     e.preventDefault();
+    await submitLead({
+      name: leadName,
+      phone: leadPhone,
+      service: selectedServicePill,
+      notes: leadNotes,
+      source: 'Homepage Bottom Inquiry Form',
+    });
     const text = `Hello Janusoft! My name is ${leadName || 'a client'}. I need help with "${selectedServicePill}". Phone/WhatsApp: ${leadPhone || 'Not provided'}. Notes: ${leadNotes || 'Ready to discuss scope.'}`;
     const url = `https://wa.me/918918254625?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');

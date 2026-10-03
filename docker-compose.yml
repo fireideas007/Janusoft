@@ -10,6 +10,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
     environment:
       - VIRTUAL_HOST=janusoft.in,www.janusoft.in
       - VIRTUAL_PORT=80
@@ -17,6 +19,7 @@ services:
       - HTTPS_METHOD=noredirect
       - LETSENCRYPT_HOST=janusoft.in,www.janusoft.in
       - LETSENCRYPT_EMAIL=aditya@janusoft.in
+      - DATA_DIR=/app/data
     expose:
       - "80"
     networks:

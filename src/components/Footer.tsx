@@ -95,6 +95,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/pricing" className="hover:text-brand-600 transition-colors">Pricing & Plans</Link></li>
               <li><Link to="/contact" className="hover:text-brand-600 transition-colors">Contact Founder</Link></li>
               <li><Link to="/engagement" className="text-emerald-700 font-semibold hover:underline">48h Prototype ({prototypePrice})</Link></li>
+              <li><Link to="/admin" className="text-slate-400 hover:text-slate-600 transition-colors text-[11px]">🔐 Admin Login</Link></li>
             </ul>
           </div>
 

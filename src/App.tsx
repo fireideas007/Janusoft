@@ -12,6 +12,7 @@ import { EngagementPage } from './pages/EngagementPage';
 import { EstimatorPage } from './pages/EstimatorPage';
 import { PricingPage } from './pages/PricingPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminDashboardPage } from './pages/AdminDashboardPage';
 
 // Scroll restoration component on route navigation
 const ScrollToTopOnRoute: React.FC = () => {
@@ -103,6 +104,14 @@ export const AppContent: React.FC = () => {
                 preFilledScope={preFilledScope}
               />
             }
+          />
+          <Route
+            path="/admin"
+            element={<AdminDashboardPage />}
+          />
+          <Route
+            path="/dashboard"
+            element={<AdminDashboardPage />}
           />
           {/* Fallback to Home */}
           <Route

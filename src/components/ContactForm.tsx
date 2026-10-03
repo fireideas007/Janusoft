@@ -13,6 +13,7 @@ import {
   Copy,
   Check
 } from 'lucide-react';
+import { submitLead } from '../services/leadService';
 
 interface ContactFormProps {
   initialService?: string;
@@ -49,9 +50,18 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     }
   }, [preFilledScope]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    await submitLead({
+      name: formData.name,
+      phone: formData.company ? `${formData.company} (Direct Contact)` : 'See details',
+      email: formData.email,
+      service: formData.service,
+      budget: formData.budget,
+      notes: `Timeline: ${formData.timeline}\nMessage: ${formData.message}`,
+      source: 'Contact Page RFP Form'
+    });
   };
 
   const generateMailtoLink = () => {
