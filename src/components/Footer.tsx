@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Terminal, Mail, Globe, Shield, ArrowUp, Building2, MapPin } from 'lucide-react';
+import { Terminal, Mail, Globe, Shield, ArrowUp, Building2, MapPin, Phone, MessageSquare } from 'lucide-react';
 import { useCurrency } from '../context/CurrencyContext';
 
 export const Footer: React.FC = () => {
@@ -32,10 +32,21 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-xs text-slate-500 leading-relaxed max-w-sm">
-              Next-generation IT agency delivering high-velocity software engineering, generative AI systems, and cloud architecture powered by state-of-the-art AI developer tooling.
+              Next-generation IT agency delivering high-velocity software engineering, generative AI systems, and paid growth funnels powered by modern vibe coding.
             </p>
 
             <div className="pt-2 flex flex-col gap-2 text-xs">
+              <div className="flex items-center gap-2 font-mono">
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                <a 
+                  href="https://wa.me/918918254625?text=Hi%20Janusoft!" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-emerald-700 transition-colors font-bold text-slate-800"
+                >
+                  WhatsApp: +91 89182 54625 (Instant Reply)
+                </a>
+              </div>
               <div className="flex items-center gap-2 font-mono">
                 <Mail className="w-3.5 h-3.5 text-brand-600" />
                 <a href="mailto:hello@janusoft.in" className="hover:text-brand-600 transition-colors">
