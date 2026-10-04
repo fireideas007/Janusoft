@@ -147,7 +147,7 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onSelectSo
             Tailored IT Solutions for Your Industry
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Inspired by enterprise solution delivery at DRC Systems & MethodHub. We combine deep domain architecture patterns with AI velocity so you never start from zero.
+            Proven architecture patterns built for high-growth sectors. We combine deep domain experience with modern velocity so you never start from zero.
           </p>
         </div>
 

@@ -84,7 +84,7 @@ export const EngagementModels: React.FC<EngagementModelsProps> = ({ onSelectMode
             How Forward-Thinking Teams Partner With Us
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Inspired by global IT leaders like DRC Systems & MethodHub, optimized for unprecedented agility. Choose the collaboration structure that fits your roadmap.
+            Built for velocity, transparency, and unprecedented agility. Choose the collaboration structure that fits your roadmap.
           </p>
 
           {/* Currency Switcher with Geo Indicator */}

@@ -78,7 +78,7 @@ export const EngagementPage: React.FC<EngagementPageProps> = ({ onSelectModel, o
             </span>
           </h1>
           <p className="mt-4 text-slate-600 text-base sm:text-lg leading-relaxed">
-            Inspired by MethodHub's agile pod and project-based structures. We offer zero-bureaucracy partnership models designed to deliver working code immediately.
+            Agile, project-based delivery with zero bureaucracy. We offer transparent partnership models designed to ship working code immediately.
           </p>
         </div>
       </div>
